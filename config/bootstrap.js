@@ -20,7 +20,7 @@ module.exports.bootstrap = function(cb) {
     // If there's at least one log the number to the console.
     if (numVideos > 0) {
       // return cb();
-      return createTestUsers();
+      return createTestUsers();   
     }
 
     // Add machinepack-youtube as a depedency
@@ -29,8 +29,8 @@ module.exports.bootstrap = function(cb) {
     // List Youtube videos which match the specified search query.
     Youtube.searchVideos({
       query: 'grumpy cat',
-      apiKey: 'ADD YOUR OWN GOOGLE API KEY',
-      limit: 15
+      apiKey: sails.config.google.apiKey,
+      limit: 15,
     }).exec({
       // An unexpected error occurred.
       error: function(err) {
@@ -52,7 +52,7 @@ module.exports.bootstrap = function(cb) {
             return cb(err);
           }
           // return cb();
-          return createTestUsers();
+          return createTestUsers();   
         });
       },
     });
@@ -66,8 +66,8 @@ module.exports.bootstrap = function(cb) {
     User.findOne({
       email: 'sailsinaction@gmail.com'
     }).exec(function(err, foundUser) {
-      if (foundUser) {
-        return cb();
+      if (foundUser){
+       return cb();
       }
 
       Passwords.encryptPassword({
@@ -91,7 +91,7 @@ module.exports.bootstrap = function(cb) {
 
           options.email = 'sailsinaction@gmail.com';
           options.encryptedPassword = result;
-          options.username = 'sails-in-action';
+          options.username = 'sailsinaction';
           options.deleted = false;
           options.admin = false;
           options.banned = false;

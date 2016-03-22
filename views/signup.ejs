@@ -32,11 +32,12 @@
           ng-class="{'has-error':signup.username.$invalid &&
           signup.username.$dirty}">
           <label>Your username</label>
-          <input type="text" class="form-control" placeholder="nikola_tesla" name="username" ng-model="signupForm.username" required>
+          <input type="text" class="form-control" placeholder="nikola_tesla" name="username" ng-model="signupForm.username" required ng-minlength="6" ng-pattern-restrict="^[A-Za-z0-9]*$" pattern="^[A-Za-z0-9]*$">
+          <span style="color:red" ng-show="signup.username.$error.pattern">Only letters and numbers are allowed!</span>
           <span class="help-block has-error" ng-if="signup.username.$dirty">
             <span ng-show="signup.username.$error.required">Username is required.</span>
           </span>
-          <h1> {{signupForm.username | spaceless}}</h1>
+          <span ng-show="signup.username.$error.minlength">Password must be at least 6 characters.</span>
         </div>
         <!-- P A S S W O R D -->
         <div class="control-group form-group col-md-6"

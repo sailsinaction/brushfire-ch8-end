@@ -29,7 +29,15 @@ module.exports = {
       return res.badRequest('A username is required!');
     }
 
-    var splitUsername = req.param('username').split(' ').join('-');
+    // username must be at least 6 characters
+    if (req.param('username').length < 6) {
+      return res.badRequest('Username must be at least 6 characters!');
+    }
+
+    // Username must contain only numbers and letters.
+    if (!_.isString(req.param('username')) || req.param('username').match(/[^a-z0-9]/i)) {
+      return res.badRequest('Invalid username: must consist of numbers and letters only.');
+    }
 
     Emailaddresses.validate({
       string: req.param('email'),
