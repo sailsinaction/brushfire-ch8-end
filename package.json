@@ -1,5 +1,5 @@
 {
-  "name": "brushfire-chp8-start",
+  "name": "brushfire-chp8-end",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -36,7 +36,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jgalt/brushfire-chp8-start.git"
+    "url": "git://github.com/jgalt/brushfire-chp8-end.git"
   },
   "author": "Mike McNeil/Irl Nathan",
   "license": "MIT"
